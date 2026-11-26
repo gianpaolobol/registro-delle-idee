@@ -1,0 +1,23 @@
+# Repository che ricevono la linea guida (uno per riga). I fork sono esclusi.
+fungo-italia
+fungo-italia-beta-preview
+APE-ITALIA
+Forgia
+catasto-italia
+piantalibera
+facciamo_balotta
+random-stranger
+penna-viva
+stampa3dbologna
+reborn
+sudare
+motore-pratiche-edilizie
+mpe-autopilot-core
+mpe-autopilot-controller
+mpe-claude
+world-explorer
+Master-Vibe
+aegis-ai
+ByteBudget
+affetta
+AIRCHITECTURE

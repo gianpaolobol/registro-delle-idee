@@ -1,0 +1,22 @@
+# Controllo della linea guida: segnala se mancano i file obbligatori.
+name: Linea guida
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  controllo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: File obbligatori
+        run: |
+          mancanti=0
+          for f in LINEAGUIDA.md README.md STATO.md AGENTS.md CLAUDE.md GEMINI.md .github/copilot-instructions.md; do
+            if [ ! -f "$f" ]; then echo "::error::Manca $f (LINEAGUIDA §4)"; mancanti=1; fi
+          done
+          for s in "## Cos'è" "## Fase" "## Traguardo minimo" "## Prossimi passi" "## Linea guida" "## Registro aggiornamenti"; do
+            grep -qF "$s" STATO.md || { echo "::error::STATO.md: manca la sezione '$s' (LINEAGUIDA §4.2)"; mancanti=1; }
+          done
+          grep -q "LINEAGUIDA.md" AGENTS.md || { echo "::error::AGENTS.md deve rimandare a LINEAGUIDA.md"; mancanti=1; }
+          exit $mancanti

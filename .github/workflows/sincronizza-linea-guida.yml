@@ -1,0 +1,21 @@
+# Quando la linea guida cambia, apre una PR in ogni repository elencato in strumenti/repository.txt.
+# Richiede il segreto SINCRONIZZA_TOKEN: token GitHub "fine-grained" con accesso a tutti i
+# repository di gianpaolobol e permessi Contents + Pull requests in scrittura.
+name: Sincronizza linea guida
+on:
+  push:
+    branches: [main]
+    paths: [LINEAGUIDA.md, modello/**]
+  workflow_dispatch:
+jobs:
+  sincronizza:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Proponi la linea guida a ogni repository
+        env:
+          GH_TOKEN: ${{ secrets.SINCRONIZZA_TOKEN }}
+          OWNER: gianpaolobol
+        run: |
+          if [ -z "$GH_TOKEN" ]; then echo "::warning::Manca il segreto SINCRONIZZA_TOKEN: sincronizzazione saltata"; exit 0; fi
+          strumenti/sincronizza.sh
