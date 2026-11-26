@@ -1,0 +1,62 @@
+name: Sincronizza linee guida
+# Quando le linee guida cambiano su main, apre in ogni repository di repository.txt
+# una pull request con la copia aggiornata e i file di ingresso per le AI.
+# Richiede il segreto LINEE_GUIDA_TOKEN: token GitHub fine-grained con accesso ai repository
+# elencati e permessi "Contents: Read and write" e "Pull requests: Read and write".
+on:
+  push:
+    branches: [main]
+    paths:
+      - LINEE_GUIDA.md
+      - sincronizzati/**
+      - modelli/SEZIONE_AGENTS.md
+      - modelli/STATO.md
+      - strumenti/sincronizza.py
+      - repository.txt
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: sincronizza-linee-guida
+  cancel-in-progress: false
+jobs:
+  sincronizza:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apri le pull request di aggiornamento
+        env:
+          GH_TOKEN: ${{ secrets.LINEE_GUIDA_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          set -u
+          if [ -z "${GH_TOKEN}" ]; then echo "::error::Manca il segreto LINEE_GUIDA_TOKEN"; exit 1; fi
+          VERSION=$(grep -oE 'linee-guida-versione: [0-9]+\.[0-9]+\.[0-9]+' LINEE_GUIDA.md | awk '{print $2}')
+          BRANCH="linee-guida/v${VERSION}"
+          HUB="$PWD"
+          git config --global user.name "linee-guida[bot]"
+          git config --global user.email "linee-guida@users.noreply.github.com"
+          failed=0
+          grep -vE '^\s*(#|$)' repository.txt | while read -r REPO; do
+            echo "::group::${REPO}"
+            dir="$RUNNER_TEMP/$REPO"
+            if ! git clone -q --depth 1 "https://x-access-token:${GH_TOKEN}@github.com/${OWNER}/${REPO}.git" "$dir"; then
+              echo "::error::${REPO}: clonazione non riuscita"; echo "::endgroup::"; continue
+            fi
+            ( cd "$dir"
+              git checkout -q -B "$BRANCH"
+              python3 "$HUB/strumenti/sincronizza.py" "$HUB" . "$REPO"
+              git add -A LINEE_GUIDA.md GEMINI.md AGENTS.md CLAUDE.md README.md STATO.md .github/copilot-instructions.md .github/linee-guida .github/workflows/verifica-linee-guida.yml
+              if git diff --cached --quiet; then echo "${REPO}: già allineato alla v${VERSION}"; exit 0; fi
+              git commit -q -m "docs: linee guida v${VERSION}" -m "Aggiornamento automatico dal registro-delle-idee."
+              git push -q -f origin "$BRANCH"
+              existing=$(gh pr list -R "${OWNER}/${REPO}" --head "$BRANCH" --state open --json number --jq 'length')
+              if [ "$existing" = "0" ]; then
+                gh pr create -R "${OWNER}/${REPO}" --head "$BRANCH" --base main \
+                  --title "docs: linee guida v${VERSION}" \
+                  --body "Aggiornamento automatico delle linee guida comuni alla versione **${VERSION}** dal repository \`registro-delle-idee\`. Tocca solo i file e i blocchi gestiti dalla sincronizzazione; il resto del repository non cambia."
+              fi
+            ) || echo "::error::${REPO}: sincronizzazione non riuscita"
+            echo "::endgroup::"
+          done

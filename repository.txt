@@ -1,0 +1,20 @@
+# Repository che ricevono gli aggiornamenti delle linee guida (uno per riga, solo il nome).
+APE-ITALIA
+fungo-italia
+fungo-italia-beta-preview
+piantalibera
+facciamo_balotta
+random-stranger
+ByteBudget
+sudare
+Forgia
+world-explorer
+aegis-ai
+stampa3dbologna
+reborn
+affetta
+catasto-italia
+motore-pratiche-edilizie
+mpe-claude
+mpe-autopilot-core
+mpe-autopilot-controller

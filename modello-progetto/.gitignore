@@ -1,0 +1,17 @@
+# Segreti: mai nel repository
+.env
+.env.*
+!.env.example
+*.pem
+*.p8
+*.p12
+*.keystore
+*.jks
+# Dipendenze e build
+node_modules/
+dist/
+build/
+.expo/
+__pycache__/
+*.pyc
+.DS_Store
