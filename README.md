@@ -25,4 +25,4 @@ Il centro della piattaforma di Gian Paolo Franceschini: le **linee guida** comun
 
 ## Configurazione una tantum
 
-L'automazione usa il segreto `LINEE_GUIDA_TOKEN`: un token GitHub *fine-grained* con accesso ai repository di `repository.txt` e permessi **Contents** e **Pull requests** in lettura e scrittura (Settings → Secrets and variables → Actions).
+L'automazione usa il segreto `LINEE_GUIDA_TOKEN`: un token GitHub *fine-grained* con accesso ai repository di `repository.txt` e permessi **Contents**, **Pull requests** e **Workflows** in lettura e scrittura (Workflows serve perché la sincronizzazione aggiorna anche il controllo automatico) (Settings → Secrets and variables → Actions).
