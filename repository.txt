@@ -18,3 +18,4 @@ motore-pratiche-edilizie
 mpe-claude
 mpe-autopilot-core
 mpe-autopilot-controller
+Master-Vibe
