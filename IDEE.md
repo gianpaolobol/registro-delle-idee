@@ -42,6 +42,7 @@ Una riga, anche dettata. Un agente la trasformerà in scheda quando Gian vorrà 
 - **Note e firme:**
   - 2026-11-26 [Gian] Promossa a progetto: repository `penna-viva`
   - 2026-11-26 [Claude] Prima versione scritta e provata in locale, in attesa della creazione del repository
+  - 2026-11-26 [Claude] Repository creato da Gian e codice caricato: https://github.com/gianpaolobol/penna-viva
 
 ### Video "Riconoscere, non indovinare"
 - **Stato:** idea

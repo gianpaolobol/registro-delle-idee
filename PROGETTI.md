@@ -27,7 +27,7 @@ Fase: `idea`, `in sviluppo`, `test interno`, `beta pubblica`, `pubblicata`, `in 
 | `piantalibera` | Pianta Libera: piante → 3D, render, stampa 3D | in sviluppo | — |
 | `facciamo_balotta` | Balotta | in sviluppo | — |
 | `random-stranger` | Random Stranger | in sviluppo | — |
-| `penna-viva` | Penna Viva: scrittura creativa con IA da voce e testi | in sviluppo (repo da creare) | 1.0 |
+| `penna-viva` | Penna Viva: scrittura creativa con IA da voce e testi | in sviluppo | 1.0 |
 | `stampa3dbologna` | Sito, CMS e generatore di modelli IA del laboratorio | pubblicata | — |
 | `reborn` | Riconosce parti rotte da foto e trova modelli 3D | ? | — |
 | `sudare` | Sudare | ? | — |
@@ -60,3 +60,4 @@ esclusi dalla linea guida, salvo decisione di Gian.
 ## Registro aggiornamenti
 
 - 2026-11-26 [Claude] Prima stesura dall'elenco dei repository su GitHub. Fasi note da conversazioni con Gian; le altre da classificare.
+- 2026-11-26 [Claude] `penna-viva`: repository creato da Gian (privato), codice caricato.
