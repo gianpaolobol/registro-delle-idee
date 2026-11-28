@@ -1,5 +1,5 @@
-<!-- linee-guida-versione: 1.1.0 -->
-# Linee guida dei progetti di Gian Paolo Franceschini — v1.1.0
+<!-- linee-guida-versione: 1.2.0 -->
+# Linee guida dei progetti di Gian Paolo Franceschini — v1.2.0
 
 > **Questo è il primo documento da leggere** in qualsiasi repository di Gian, per persone e per AI (ChatGPT/Codex, Claude, Gemini, Copilot e qualsiasi altro agente).
 > L'originale vive in `gianpaolobol/registro-delle-idee/LINEE_GUIDA.md`. Nei singoli repository c'è una **copia sincronizzata automaticamente**: non modificarla lì, perché verrebbe sovrascritta. Le modifiche si fanno solo nell'originale.
@@ -121,5 +121,18 @@ Ogni giorno il giro aggiorna anche `Master-Vibe/02_WEEKLY_DIGEST/`: quali compet
 
 ## 9. Registro delle versioni
 
+- **1.2.0 — 2026-11-28 [Codex, su richiesta di Gian]** Capitolo 10: build finali, collaudo cumulativo, tutela quote ed eccezioni native.
 - **1.1.0 — 2026-11-26 [Claude, su richiesta di Gian]** Capitolo 8: giro di controllo coordinato (all'avvio di ogni sessione, diario giornaliero automatico, riepilogo settimanale, collegamento con Master Vibe).
 - **1.0.0 — 2026-11-26 [Claude, su richiesta di Gian]** Prima versione: flusso idea → progetto, struttura standard, regole di lavoro, protocollo per le AI, `STATO.md`, deroghe, aggiornamento centralizzato.
+
+## 10. Protocollo build finali e tutela delle quote — [Codex, su direttiva del titolare 2026-11-28]
+
+Regola trasversale obbligatoria per tutti i progetti esistenti e futuri, agenti, orchestratori e automazioni. Non compilare a ogni modifica.
+
+1. Completare i lotti funzionali e consolidare il candidato con test locali gratuiti: unitari, integrazione, typecheck, lint, regressioni, sicurezza, backend, simulazioni e revisione incrociata secondo il rischio. Correggere e ripetere i controlli prima della compilazione cloud.
+2. Congelare il candidato: SHA, lockfile, configurazione, backup, prove e gate pre-build applicabili. Registrare separatamente i gate nativi che richiedono il binario e non dichiararli già superati.
+3. Verificare quota gratuita effettivamente disponibile, autorizzazioni, piattaforme e artefatti già prodotti. Coordinare una sola build finale per piattaforma/profilo necessario sul candidato qualificato; riutilizzare artefatti identici compatibili e non duplicare CI, compilazioni o deploy.
+4. Compilazioni intermedie ammesse solo per un blocco nativo concreto non risolvibile con verifiche locali più economiche: motivazione, responsabile unico, controllo quota e autorizzazioni, nessuna spesa nuova. Non ripetere build fallite senza diagnosi e correzione verificabile.
+5. Dopo la build eseguire i gate nativi, collaudo fisico, firma, installazione e distribuzione beta autorizzata; non saltare questi controlli per risparmiare risorse. Una regressione nativa bloccante richiede correzione e nuova qualifica, non rilascio prematuro.
+6. Forgia e il report di meta-orchestrazione verificano applicazione, duplicazioni e consumo reale delle quote, registrano eccezioni e propagano la regola alle attività future. Non modificare workflow o avviare sincronizzazioni cloud a pagamento senza autorizzazione. Per Fungo Italia, nessuna CI privata prima del rinnovo effettivo del 1 dicembre 2026; rispettare il task build separato e tutti i gate scientifici.
+
