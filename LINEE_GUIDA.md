@@ -1,5 +1,5 @@
-<!-- linee-guida-versione: 1.0.0 -->
-# Linee guida dei progetti di Gian Paolo Franceschini — v1.0.0
+<!-- linee-guida-versione: 1.1.0 -->
+# Linee guida dei progetti di Gian Paolo Franceschini — v1.1.0
 
 > **Questo è il primo documento da leggere** in qualsiasi repository di Gian, per persone e per AI (ChatGPT/Codex, Claude, Gemini, Copilot e qualsiasi altro agente).
 > L'originale vive in `gianpaolobol/registro-delle-idee/LINEE_GUIDA.md`. Nei singoli repository c'è una **copia sincronizzata automaticamente**: non modificarla lì, perché verrebbe sovrascritta. Le modifiche si fanno solo nell'originale.
@@ -71,7 +71,7 @@ Si creano solo le cartelle che servono.
 
 ## 4. Protocollo per le AI
 
-1. **All'inizio di ogni sessione leggi, in ordine:** `LINEE_GUIDA.md` → `AGENTS.md` (comprese le deroghe) → `STATO.md` → i documenti che questi indicano.
+1. **All'inizio di ogni sessione leggi, in ordine:** `LINEE_GUIDA.md` → `AGENTS.md` (comprese le deroghe) → `STATO.md` → i documenti che questi indicano. Poi fai il **giro di controllo** del capitolo 8.
 2. **Firma tutto ciò che aggiungi:** `[Codex]` (ChatGPT/Codex), `[Claude]`, `[Gemini]`, `[Copilot]`, `[Gian]`, `[Altro: nome]`.
 3. **`AGENTS.md` si aggiunge, non si riscrive.** Nuova sezione: `## [Firma] Titolo — AAAA-MM-GG`. Non cancellare né riformulare sezioni altrui. Per superarne una scrivi `## [Firma] Rettifica: <titolo> — AAAA-MM-GG`. Rispetta l'ordine già usato nel file.
 4. La sezione `[Gian] Protocollo comune` in cima ad `AGENTS.md` e le righe `@LINEE_GUIDA.md` / `@AGENTS.md` dei file di ingresso non si toccano.
@@ -95,6 +95,31 @@ Si aggiorna nella stessa PR del lavoro. Se cambia la fase si aggiorna anche `STA
 - Quando l'originale cambia su `main`, l'automazione del registro apre in ogni repository di `repository.txt` una pull request con la nuova copia e i file di ingresso aggiornati. Approvandola, il repository è allineato.
 - Il controllo automatico di ogni repository segnala se la copia è più vecchia dell'originale.
 
-## 8. Registro delle versioni
+## 8. Giro di controllo coordinato
 
+Lo scopo è che nessuno rifaccia ciò che esiste già in un altro repository, e che il percorso di studio di Gian (Master Vibe) segua quello che sta davvero facendo.
+
+### 8.1 All'inizio di ogni sessione (ogni AI: Codex, Claude, Gemini, Copilot…)
+1. Leggi l'ultimo **diario** in `registro-delle-idee/diario/` (uno al giorno) e `MAPPA_COLLEGAMENTI.md`.
+2. Prima di sviluppare qualcosa, chiediti: esiste già in un altro repository? Se sì, **riusalo** (cap. 3, regola 6) e cita l'origine.
+3. Se non hai accesso al registro, scrivilo nella PR: il controllo resta da fare.
+
+### 8.2 Ogni giorno (automatico)
+Un giro di controllo programmato legge le novità di tutti i repository di `repository.txt` (commit, pull request, `STATO.md`) e scrive il diario del giorno nel registro:
+- **cosa è cambiato** in ogni progetto;
+- **sovrapposizioni**: lavori simili in repository diversi, con il suggerimento di quale codice riusare;
+- **aggiornamenti** per `MAPPA_COLLEGAMENTI.md` e `STATO_APP.md`;
+- **cosa serve da Gian**.
+
+I file del diario e gli aggiornamenti automatici di mappa e stato si scrivono direttamente su `main` del registro, senza pull request: sono resoconti, non decisioni.
+
+### 8.3 Ogni settimana
+Il diario della domenica riassume la settimana: componenti da estrarre in una libreria comune, progetti fermi, duplicazioni da risolvere.
+
+### 8.4 Collegamento con Master Vibe
+Ogni giorno il giro aggiorna anche `Master-Vibe/02_WEEKLY_DIGEST/`: quali competenze sono state usate e quali argomenti del piano di studio diventano utili per il lavoro in corso. **Master Vibe è pubblico**: lì si scrivono solo argomenti e competenze, mai nomi di repository privati, codice proprietario o dati personali.
+
+## 9. Registro delle versioni
+
+- **1.1.0 — 2026-11-26 [Claude, su richiesta di Gian]** Capitolo 8: giro di controllo coordinato (all'avvio di ogni sessione, diario giornaliero automatico, riepilogo settimanale, collegamento con Master Vibe).
 - **1.0.0 — 2026-11-26 [Claude, su richiesta di Gian]** Prima versione: flusso idea → progetto, struttura standard, regole di lavoro, protocollo per le AI, `STATO.md`, deroghe, aggiornamento centralizzato.

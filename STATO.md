@@ -23,7 +23,8 @@ Repository GitHub `gianpaolobol/registro-delle-idee`.
 - Offre agli altri: linee guida, file di ingresso per le AI, controllo `verifica-linee-guida`, modello per i nuovi progetti
 
 ## Linee guida
-Segue la versione **1.0.0** (`LINEE_GUIDA.md`).
+Segue la versione **1.1.0** (`LINEE_GUIDA.md`).
 
 ## Registro aggiornamenti
 - 2026-11-26 [Claude] Prima versione: linee guida v1.0.0, sincronizzazione, modelli.
+- 2026-11-26 [Claude] Linee guida v1.1.0: giro di controllo coordinato e diario giornaliero.
